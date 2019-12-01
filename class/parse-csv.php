@@ -42,12 +42,12 @@ if (!class_exists('cafe5_parse_csv')):
 					$returnString .= '<div class="desc" style="width: 100%;">';
 
 					$returnString .= '<div class="d-flex text align-items-center">';
-					$returnString .= '<h3><span>' . $s[$i][0] . '</span></h3>';
-					$returnString .= '<span class="price">' . $s[$i][3] . ' CZK</span>';
+					$returnString .= '<h3><span>' . $s[$i][2] . '</span></h3>';
+					$returnString .= '<span class="price">' . $s[$i][4] . ' CZK</span>';
 					$returnString .= '</div>';
 
 					$returnString .= '<div class="d-block">';
-					$returnString .= '<p>' . $s[$i][1] . '</p>';
+					//$returnString .= '<p>' . $s[$i][1] . '</p>';
 					$returnString .= '</div>';
 					$returnString .= '</div>';
 					$returnString .= '</div>';

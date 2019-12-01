@@ -7374,7 +7374,9 @@ h1, h2, h3, h4, h5,
 
 .heading-pricing {
   text-transform: uppercase;
-  font-size: 24px; }
+  font-size: 24px;
+  border-bottom: 3px solid #e3000f;
+  padding-bottom: 15px; }
 
 h3.heading-pricing {
   line-height: 0.4; }

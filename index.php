@@ -53,55 +53,41 @@
 
             <div class="col-md-8 col-sm-12 text-center ftco-animate">
               <h1 class="mb-4">Café 5</h1>
-              <p class="mb-4 mb-md-5">Chcete tu nejlepší kávu v srdci Prahy?</p>
-              <p><a href="#menu" class="btn btn-primary p-3 px-xl-4 py-xl-3">Objednat</a> <a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Prohlédnout menu</a></p>
+              <p class="mb-4 mb-md-5">Your place for today's breakfast, brunch, coffee or just a glass of wine in the heart of Prague still aside from crowds.</p>
+              <p><a href="#hours" class="btn btn-primary p-3 px-xl-4 py-xl-3">Address</a> <a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Menu</a></p>
             </div>
 
           </div>
         </div>
       </div>
 
-      <div class="slider-item" style="background-image: url(images/slider/cafe5_bagel.png);">
+      <div class="slider-item" style="background-image: url(images/slider/slider-2.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
             <div class="col-md-8 col-sm-12 text-center ftco-animate">
               <h1 class="mb-4">Café 5</h1>
-              <p class="mb-4 mb-md-5">Chcete tu nejlepší kávu v srdci Prahy?</p>
-              <p><a href="#menu" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+              <p class="mb-4 mb-md-5">Your place for today's breakfast, brunch, coffee or just a glass of wine in the heart of Prague still aside from crowds.</p>
+              <p><a href="#hours" class="btn btn-primary p-3 px-xl-4 py-xl-3">Address</a> <a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Menu</a></p>
             </div>
 
           </div>
         </div>
       </div>
 
-      <div class="slider-item" style="background-image: url(images/slider/cafe5_wine.png);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-
-            <div class="col-md-8 col-sm-12 text-center ftco-animate">
-              <h1 class="mb-4">Café 5</h1>
-              <p class="mb-4 mb-md-5">Chcete tu nejlepší kávu v srdci Prahy?</p>
-              <p><a href="#menu" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#menu" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-            </div>
-
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="hours" class="ftco-section ftco-services">
     	<div class="container">
     		<div class="row">
-          <div class="col-md-4 ftco-animate">
+          <div id="address" class="col-md-4 ftco-animate">
             <div class="media d-block text-center block-6 services">
               <div class="icon d-flex justify-content-center align-items-center mb-5">
               	<span class="flaticon-coffee-bean"></span>
               </div>
               <div class="media-body">
-                <h3 class="heading">Najdete nás</h3>
+                <h3 class="heading">Address</h3>
                 <p>You can find us at the center of Prague - <a href="https://g.page/cafe5prague?share" target="_blank">Betlémská 12, Prague</a>.</p>
               </div>
             </div>
@@ -113,7 +99,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Opening Hours</h3>
-                <p>Opened daily: Mon-Fri 9:00-20:00, Weekend 9:00-19:00</p>
+                <p>Opened daily: Mon-Fri 9:00-20:00</p>
               </div>
             </div>
           </div>
@@ -122,8 +108,8 @@
               <div class="icon d-flex justify-content-center align-items-center mb-5">
               	<span class="flaticon-choices"></span></div>
               <div class="media-body">
-                <h3 class="heading">Líbilo se vám u nás?</h3>
-                <p> Ohodnoťte nás na <a href="https://www.google.com/search?q=adresa+Cafe5&oq=adresa+Cafe5&aqs=chrome..69i57.3355j0j7&sourceid=chrome&ie=UTF-8#lrd=0x470b95ce00ff801b:0x7780305359cff62b,3,,," target="_blank">Google</a>, <a href="https://www.tripadvisor.cz/Restaurant_Review-g274707-d17377964-Reviews-Cafe5-Prague_Bohemia.html" target="_blank">Tripadvisor</a>, <a href="https://www.facebook.com/cafe5prague/reviews/" target="_blank">Facebooku</a>. Těšíme se na vaše zprávy.</p>
+                <h3 class="heading">Review us on</h3>
+                <p> You can review us on <a href="https://www.google.com/search?q=adresa+Cafe5&oq=adresa+Cafe5&aqs=chrome..69i57.3355j0j7&sourceid=chrome&ie=UTF-8#lrd=0x470b95ce00ff801b:0x7780305359cff62b,3,,," target="_blank">Google</a>, <a href="https://www.tripadvisor.cz/Restaurant_Review-g274707-d17377964-Reviews-Cafe5-Prague_Bohemia.html" target="_blank">Tripadvisor</a>, <a href="https://www.facebook.com/cafe5prague/reviews/" target="_blank">Facebook</a>.</p>
               </div>
             </div>
           </div>
@@ -161,14 +147,14 @@
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center fadeInUp ftco-animated">
             <h2 class="mb-4">Menu</h2>
-            <p>Nabízíme ...</p>
+            <p>Come and enjoy breakfast or brunch from 9 a.m. till 2.30 p.m.</p>
           </div>
         </div>
 
         <div class="row align-items-center">
 
 
-          <div class="col-md-6 mb-5 pb-3 align-top">
+          <div class="col-md-4 mb-5 pb-3 align-top">
 
             <h3 class="mb-5 heading-pricing ftco-animate fadeInUp ftco-animated">Breakfest</h3>
 
@@ -181,19 +167,21 @@ echo $menu->showMenu();
 
           </div>
 
-          <div class="col-md-6 mb-5 pb-3">
 
-            <h3 class="mb-5 heading-pricing ftco-animate fadeInUp ftco-animated">Brunch</h3>
+          <div class="col-md-4 mb-5 pb-3 align-top">
+
+            <h3 class="mb-5 heading-pricing ftco-animate fadeInUp ftco-animated">Coffee</h3>
 
             <?php
+require_once __DIR__ . "/autoload.php";
 
-/* CSV MENU Parse:start; */
-
-$menu = new cafe5_parse_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTyxX6qhe-1ZK1aQAEvBfbZyNE2KNWh9WChr8GL2u9RbqcigCkXzsJ8XU6ygV3bz0iBMnnrl6ofvFCR/pub?gid=624600647&single=true&output=csv");
+$menu = new cafe5_parse_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTyxX6qhe-1ZK1aQAEvBfbZyNE2KNWh9WChr8GL2u9RbqcigCkXzsJ8XU6ygV3bz0iBMnnrl6ofvFCR/pub?gid=573576366&single=true&output=csv");
 echo $menu->showMenu();
-
-/* CSV MENU Parse:end; */
 ?>
+
+          </div>
+
+          <div class="col-md-4 mb-5 pb-3 align-top">
 
             <h3 class="mb-5 heading-pricing ftco-animate fadeInUp ftco-animated">Drinks</h3>
 
@@ -217,19 +205,19 @@ echo $menu->showMenu();
     	<div class="container-wrap">
     		<div class="row no-gutters">
 					<div class="col-md-3 ftco-animate">
-						<a class="gallery img d-flex align-items-center" style="background-image: url(images/gallery/5.jpg);">
+						<a class="gallery img d-flex align-items-center" style="background-image: url(images/menu/breakfest-1.jpg);">
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a class="gallery img d-flex align-items-center" style="background-image: url(images/gallery/3.jpg);">
+						<a class="gallery img d-flex align-items-center" style="background-image: url(images/menu/breakfest-2.jpg);">
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a class="gallery img d-flex align-items-center" style="background-image: url(images/gallery/2.jpg);">
+						<a class="gallery img d-flex align-items-center" style="background-image: url(images/menu/breakfest-3.jpg);">
 						</a>
 					</div>
 					<div class="col-md-3 ftco-animate">
-						<a class="gallery img d-flex align-items-center" style="background-image: url(images/gallery/4.jpg);">
+						<a class="gallery img d-flex align-items-center" style="background-image: url(images/menu/breakfest-4.jpg);">
 						</a>
 					</div>
         </div>
@@ -269,7 +257,7 @@ $instagramFeed = new cafe5_instagram_feed();
           <div class="col-md-6 appointment ftco-animate fadeInUp ftco-animated">
             <h3 class="mb-3">Career</h3>
 
-            <p>Chtěli byste u nás pracovat jako barista? Vše vás naučíme a proškolíme. Napište nám: vlorv@seznam.cz</p>
+            <p>Do you want to work as a barista at any of our cafés? We will learn you everything, contact us: vlorv@seznam.cz</p>
 
           </div>
 
@@ -279,9 +267,7 @@ $instagramFeed = new cafe5_instagram_feed();
             <p>Café5</p>
             <p>Betlémská 12, Prague</p>
             <p>101 00 Czech Republic</p>
-            <br><br>
-            <p>+420 123 456 798</p>
-            <p>E-mail: info(at)cafe5.cz</p>
+            <p>+420 606 281 546</p>
 
           </div>
         </div>
