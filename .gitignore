@@ -1,0 +1,10 @@
+﻿# Tento zápis ale ignoruje soubory v celém projektu
+
+*.sql
+*sftp-config.json
+*.sublime-workspace
+*.sublime-project
+wp-content/**/*.scss 
+
+# Pokud neznáme přesné zanoření, můžeme využít **
+# ignoruje www/d21.cache, www/html/tpl.cache i www/html/tpl/xx.cache ...
