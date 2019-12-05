@@ -230,7 +230,7 @@ echo $menu->showMenu();
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center fadeInUp ftco-animated">
             <h2 class="mb-4">Instagram</h2>
-            <p>Follow us on Instagram</p>
+            <p>Follow us on <a target="_blank" href="https://www.instagram.com/cafe5_prague/">Instagram</a></p>
           </div>
         </div>
 
@@ -239,7 +239,7 @@ echo $menu->showMenu();
 /* Instagram Feed:start; */
 
 $instagramFeed = new cafe5_instagram_feed();
-//echo $instagramFeed->getFeed();
+echo $instagramFeed->getFeed();
 
 /* Instagram Feed:end; */
 ?>

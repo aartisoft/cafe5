@@ -23,8 +23,9 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		public function getAccessToken() {
 
-			$apiKey = "14438701390.4b1bff5.239d526e9640452e944c67e43f872d1a";
+			$apiKey = "IGQVJWd3JSY3BVdW12LWpIZAHlwR2pQTGFZARXNGV2ZAQOVdfX2liSzd5b25qZATlSczNpZA1hGMFMwU25ULWpjQ0tIRjdyM0dzZAHdHUmNIQXBONWwzd0VsRndfZAVhFbE1aMWx3MmU5bG5IcWNkLTVndkMxdVRFYzhtTEFRZAzdN";
 			//https://rudrastyh.com/tools/access-token
+			//https://instagram.pixelunion.net/#access_token=10816490980.1677ed0.d38e0f31bab84cc7b4faa2d80144625a
 
 			return $apiKey;
 
@@ -45,7 +46,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		public function getinstagramId() {
 
-			return "14438701390";
+			return "17841410889402061";
 
 		}
 
@@ -72,7 +73,7 @@ if (!class_exists('cafe5_instagram_feed')):
 		public function getJson() {
 
 			$resultsNumber = '10';
-			$url = 'https://api.instagram.com/v1/users/' . $this->getinstagramId() . '/media/recent?access_token=' . $this->getAccessToken();
+			$url = 'https://graph.instagram.com/' . $this->getinstagramId() . '/media/?access_token=' . $this->getAccessToken() . "&fields=id,username,caption,permalink,media_url,thumbnail_url";
 
 			if (ini_get('allow_url_fopen')) {
 
@@ -99,7 +100,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			}
 
-			if ($json_response['meta']["code"] == 200) {
+			if (!$json_response['error']) {
 
 				$logger = new cafe5_logger("Instagram JSON vrátil status 200, což je OK :-)");
 
@@ -147,12 +148,11 @@ if (!class_exists('cafe5_instagram_feed')):
 
 				foreach ($json_response['data'] as $item) {
 
-					$videoTitle = $item['user']['full_name'];
-
-					$videoID = $item['caption']['id'];
-					$text = $item['caption']['text'];
-					$videoThumbnail = $item['images']['thumbnail']['url'];
-					$link = $item["link"];
+					$videoTitle = $item['caption'];
+					$videoID = $item['id'];
+					$text = $item['caption'];
+					$videoThumbnail = $item['media_url'];
+					$link = $item["permalink"];
 
 					if (($videoTitle && $videoID) && $i < 16) {
 
@@ -298,6 +298,86 @@ if (!class_exists('cafe5_instagram_feed')):
 			var_dump($edges);
 
 			return $edges;
+		}
+
+		public function parse_test2() {
+
+			$url = "https://www.instagram.com/pasospardubice/?__a=1";
+			$url = sprintf("https://www.instagram.com/pasospardubice/");
+			ini_set("allow_url_fopen", 1);
+			$username = "pasospardubice";
+
+			$url = "https://www.instagram.com/' . $username . '/?__a=1";
+
+			$connection_c = curl_init(); // initializing
+
+			curl_setopt($connection_c, CURLOPT_URL, $url); // API URL to connect
+			curl_setopt($connection_c, CURLOPT_POST, TRUE);
+			curl_setopt($connection_c, CURLOPT_TIMEOUT, 20);
+			curl_setopt($connection_c, CURLOPT_SSL_VERIFYPEER, FALSE);
+			curl_setopt($connection_c, CURLOPT_RETURNTRANSFER, 1); // return the result, do not print
+
+			$data = curl_exec($connection_c);
+			curl_close($connection_c);
+
+			echo "<pre>";
+			echo $data;
+			echo "</pre>";
+
+			return $data;
+
+		}
+
+		public function getCode() {
+
+			// https://developers.facebook.com/docs/instagram-basic-display-api/
+
+			$instagramId = urlencode("530800384432056");
+			$instagramAppSecret = urlencode("b5a6ef471345931fe850a48c3b130cd6");
+			$redirectUri = urlencode("https://www.cafe5.cz/auth/");
+
+			$api_url = "https://api.instagram.com/oauth/authorize?app_id=" . $instagramId . "&redirect_uri=" . $redirectUri . "&scope=user_profile,user_media&response_type=code";
+
+			return $api_url;
+
+		}
+
+		public function getNewAccessToken($code = NULL) {
+
+			$appId = htmlspecialchars("530800384432056");
+			$instagramUsername = "cafe5_prague";
+			$appSecret = htmlspecialchars("b5a6ef471345931fe850a48c3b130cd6");
+			$redirectUri = urlencode("https://www.cafe5.cz/auth/");
+			$codeTrimmed = str_replace('#_', '', urldecode($code));
+
+			$api_url = "https://api.instagram.com/oauth/access_token";
+
+			$dataCurl = array(
+
+				'app_id' => $appId,
+				'app_secret' => $appSecret,
+				'grant_type' => 'authorization_code',
+				'redirect_uri' => $redirectUri,
+				'code' => $codeTrimmed,
+
+			);
+
+			//$headers = array('Content-Type: multipart/form-data');
+
+			$connection_c = curl_init(); // initializing
+			curl_setopt($connection_c, CURLOPT_URL, $api_url); // API URL to connect
+			curl_setopt($connection_c, CURLOPT_POST, TRUE);
+			curl_setopt($connection_c, CURLOPT_TIMEOUT, 20);
+			curl_setopt($connection_c, CURLOPT_POSTFIELDS, $dataCurl);
+			curl_setopt($connection_c, CURLOPT_SSL_VERIFYPEER, FALSE);
+			//curl_setopt($connection_c, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($connection_c, CURLOPT_RETURNTRANSFER, 1); // return the result, do not print
+			$json_return = curl_exec($connection_c); // connect and get json data
+			$http_code = curl_getinfo($connection_c, CURLINFO_HTTP_CODE);
+			curl_close($connection_c); // close connection
+
+			return $json_return . "<br><br>" . $codeTrimmed;
+
 		}
 
 	} // end class
