@@ -62,7 +62,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			} else {
 
-				$logger = new cafe5_logger("Nepodařilo se zapsat JSON z Instagramu do txt souboru");
+				$logger = new cafe5_logger("Nepodařilo se zapsat JSON z Instagramu do txt souboru", "Error");
 
 			}
 
@@ -110,7 +110,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			} else {
 
-				$logger = new cafe5_logger("Instagram JSON vrátil chybu" . $json_response['meta']["code"] . " s chybovou hláškou" . $json_response['meta']["error_message"]);
+				$logger = new cafe5_logger("Instagram JSON vrátil chybu" . $json_response['meta']["code"] . " s chybovou hláškou" . $json_response['meta']["error_message"], "Error");
 
 				$json_response = NULL;
 
@@ -187,7 +187,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 				$returnString .= '<div class="youtube-channel-videos error"><p>No videos are available at this time from the channel specified!</p></div>';
 
-				$logger = new cafe5_logger("Žádny záznam v JSON Instagramu");
+				$logger = new cafe5_logger("Žádny záznam v JSON Instagramu", "Error");
 
 			}
 
@@ -218,7 +218,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			} else {
 
-				$loggerError = new cafe5_logger("Nebyl zapsán Instagram JSON do txt z důvodu chyby");
+				$loggerError = new cafe5_logger("Nebyl zapsán Instagram JSON do txt z důvodu chyby", "Error");
 
 				echo "error";
 
@@ -249,7 +249,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			} else {
 
-				$loggerError = new cafe5_logger("Instagram složka není zapisovatelná.");
+				$loggerError = new cafe5_logger("Instagram složka není zapisovatelná.", "Error");
 				return false;
 			}
 

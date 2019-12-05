@@ -202,3 +202,31 @@ aaa2019-10-30 17:40:05.370146 - Spuštěn Instagram cron ke stažení JSON z Ins
 2019-12-05 22:11:21.629276 - Instagram JSON vrátil status 200, což je OK :-)
 2019-12-05 22:11:21.630067 - Byl zapsán Instagram JSON do txt
 2019-12-05 22:11:21.630230 - Ukončen Instagram cron
+2019-12-05 22:42:38.696995 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:42:38.778215 - Instagram JSON vrátil status 200, což je OK :-)
+2019-12-05 22:42:38.778357 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-05 22:42:38.778423 - Ukončen Instagram cron
+2019-12-05 22:45:19.166790 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:45:19.257693 - Instagram JSON vrátil status 200, což je OK :-)
+2019-12-05 22:45:19.257858 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-05 22:45:19.257951 - Ukončen Instagram cron
+2019-12-05 22:45:30.845721 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:45:30.924108 - Instagram JSON vrátil status 200, což je OK :-)
+2019-12-05 22:45:30.924247 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-05 22:45:30.924321 - Ukončen Instagram cron
+2019-12-05 22:45:32.122526 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:45:32.216773 - Instagram JSON vrátil status 200, což je OK :-)
+2019-12-05 22:45:32.216955 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-05 22:45:32.217046 - Ukončen Instagram cron
+2019-12-05 22:46:39.731779 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:46:39.814507 - Instagram JSON vrátil status 200, což je OK :-)
+[ERROR] 2019-12-05 22:46:39.814699 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-05 22:46:39.814810 - Ukončen Instagram cron
+2019-12-05 22:48:06.742579 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:48:06.860120 - Instagram JSON vrátil status 200, což je OK :-)
+[ERROR] 2019-12-05 22:48:06.860310 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-05 22:48:06.860426 - Ukončen Instagram cron
+2019-12-05 22:48:11.784485 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+2019-12-05 22:48:11.977288 - Instagram JSON vrátil status 200, což je OK :-)
+2019-12-05 22:48:11.995340 - Byl zapsán Instagram JSON do txt
+2019-12-05 22:48:11.995493 - Ukončen Instagram cron
