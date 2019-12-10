@@ -14,8 +14,18 @@ if (!class_exists('cafe5_instagram_feed')):
 	class cafe5_instagram_feed {
 
 		public $filename = "/hosting/www/cafe5.cz/www/json/json.txt";
+		public $instagramTokenFile = "/hosting/www/cafe5.cz/www/token/instagram/instagram.txt"; 
 		public $clientID = "4b1bff5bd54a4986b7d8bb517604dc14";
 		public $clientSecret = "d02b4f5ee74347219ca8bb9275caa2ec";
+		public $instagramId = 530800384432056;
+		public $instagramAppSecret = "b5a6ef471345931fe850a48c3b130cd6";
+		public $redirectUri = "https://www.cafe5.cz/auth/";
+
+		public $appId = 530800384432056;
+		public $instagramUsername = "cafe5_prague";
+		public $appSecret = "b5a6ef471345931fe850a48c3b130cd6";
+
+
 
 		public function __construct() {
 
@@ -23,11 +33,14 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		public function getAccessToken() {
 
-			$apiKey = "IGQVJWd3JSY3BVdW12LWpIZAHlwR2pQTGFZARXNGV2ZAQOVdfX2liSzd5b25qZATlSczNpZA1hGMFMwU25ULWpjQ0tIRjdyM0dzZAHdHUmNIQXBONWwzd0VsRndfZAVhFbE1aMWx3MmU5bG5IcWNkLTVndkMxdVRFYzhtTEFRZAzdN";
-			//https://rudrastyh.com/tools/access-token
-			//https://instagram.pixelunion.net/#access_token=10816490980.1677ed0.d38e0f31bab84cc7b4faa2d80144625a
+			ini_set('allow_url_fopen', 1);
+			$filename = $this->instagramTokenFile;
 
-			return $apiKey;
+			$token = fopen($filename, 'r');
+			$content = fread($token, filesize($filename));
+			fclose($token);
+
+			return $content;
 
 		}
 
@@ -70,33 +83,44 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		}
 
+		public function writeAccessTokenToTxt($values) {
+
+			$filename = $this->instagramTokenFile;
+			$file = fopen($filename, "w");
+
+			if (is_resource($file)) {
+
+				fwrite($file, $values);
+				fclose($file);
+
+			} else {
+
+				$logger = new cafe5_logger("Nepodařilo se zapsat JSON z Instagramu do txt souboru", "Error");
+
+			}
+
+			return true;
+
+		}
+
 		public function getJson() {
 
 			$resultsNumber = '10';
 			$url = 'https://graph.instagram.com/' . $this->getinstagramId() . '/media/?access_token=' . $this->getAccessToken() . "&fields=id,username,caption,permalink,media_url,thumbnail_url";
 
-			if (ini_get('allow_url_fopen')) {
+			if (function_exists('curl_version')) {
 
-				$response = file_get_contents($url);
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, $url);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, TRUE);
+				$response = curl_exec($curl);
+				curl_close($curl);
 				$json_response = json_decode($response, TRUE);
 
 			} else {
 
-				if (function_exists('curl_version')) {
-
-					$curl = curl_init();
-					curl_setopt($curl, CURLOPT_URL, $url);
-					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-					curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, TRUE);
-					$response = curl_exec($curl);
-					curl_close($curl);
-					$json_response = json_decode($response, TRUE);
-
-				} else {
-
-					$json_response = NULL;
-
-				}
+				$json_response = NULL;
 
 			}
 
@@ -110,7 +134,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			} else {
 
-				$logger = new cafe5_logger("Instagram JSON vrátil chybu" . $json_response['meta']["code"] . " s chybovou hláškou" . $json_response['meta']["error_message"], "Error");
+				$logger = new cafe5_logger("Instagram JSON vrátil chybu " . $json_response['error']["code"] . " s chybovou hláškou" . $json_response['error']["message"], "Error");
 
 				$json_response = NULL;
 
@@ -203,6 +227,46 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		}
 
+		public function extendedToken($token) {
+
+			$url = "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=".$this->instagramAppSecret."&access_token=".$token;
+
+			if (function_exists('curl_version')) {
+
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, $url);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, TRUE);
+				$response = curl_exec($curl);
+				curl_close($curl);
+				$json_response = json_decode($response, TRUE);
+
+			} else {
+
+				$json_response = NULL;
+
+			}
+
+			if (!$json_response['error']) {
+
+				$logger = new cafe5_logger("Instagram Extended Access Token vrátil status 200, což je OK :-)");
+
+				// tady bude funkce, ktera projde json a ulozi obrazky a url obrazku zameni na url na serveru
+
+				return $json_response["access_token"];
+
+			} else {
+
+				$logger = new cafe5_logger("Instagram Extended Access Token vrátil chybu " . $json_response['error']["code"] . " s chybovou hláškou" . $json_response['error']["message"], "Error");
+
+				$json_response = NULL;
+
+				return $json_response;
+
+			}			
+
+		}
+
 		public function cron() {
 
 			$logger = new cafe5_logger("Spuštěn Instagram cron ke stažení JSON z Instagramu");
@@ -223,6 +287,32 @@ if (!class_exists('cafe5_instagram_feed')):
 				echo "error";
 
 			}
+
+			$loggerEnd = new cafe5_logger("Ukončen Instagram cron");
+
+		}
+
+		public function cronExtendedToken($token) {
+
+			$logger = new cafe5_logger("Spuštěn Instagram cron k prodloužení Access Tokenu pro Instagram");
+
+			$getExtendedToken = $this->extendedToken($token);
+
+			if($getExtendedToken){
+
+				$writeData = $this->writeAccessTokenToTxt($getExtendedToken);
+				$loggerOK = new cafe5_logger("Byl zapsán Instagram Instagram Extended Access Token do txt");
+				
+				echo "OK";
+
+			}else{
+
+				$loggerError = new cafe5_logger("Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby", "Error");
+
+				echo "error";
+
+			}
+
 
 			$loggerEnd = new cafe5_logger("Ukončen Instagram cron");
 
@@ -253,90 +343,14 @@ if (!class_exists('cafe5_instagram_feed')):
 				return false;
 			}
 
-		}
+		}		
 
-		public function __toString() {
-
-			return "Bacha, vypisuješ objekt...";
-
-		}
-
-		public function parseCSVTest() {
-
-			$igThumbnails = [];
-
-			try {
-				$arrContextOptions = array(
-					"ssl" => array(
-						"verify_peer" => false,
-						"verify_peer_name" => false,
-					),
-				);
-
-				$ig = file_get_contents("https://www.instagram.com/instagram/", false,
-					stream_context_create($arrContextOptions));
-				$ig_json = [];
-
-				preg_match('/">.+?[=].?({.+);\<\//', $ig, $ig_json);
-
-				$edges = json_decode($ig_json[1],
-
-					true)["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"];
-
-				foreach ($edges as $edge) {
-					$igThumbnails[] = [
-						"shortcode" => $edge["node"]["shortcode"],
-						"thumbnail_src" => $edge["node"]["thumbnail_src"],
-					];
-					if (count($igThumbnails) == 12) {
-						break;
-					}
-				}
-
-			} catch (\Exception $e) {}
-
-			var_dump($edges);
-
-			return $edges;
-		}
-
-		public function parse_test2() {
-
-			$url = "https://www.instagram.com/pasospardubice/?__a=1";
-			$url = sprintf("https://www.instagram.com/pasospardubice/");
-			ini_set("allow_url_fopen", 1);
-			$username = "pasospardubice";
-
-			$url = "https://www.instagram.com/' . $username . '/?__a=1";
-
-			$connection_c = curl_init(); // initializing
-
-			curl_setopt($connection_c, CURLOPT_URL, $url); // API URL to connect
-			curl_setopt($connection_c, CURLOPT_POST, TRUE);
-			curl_setopt($connection_c, CURLOPT_TIMEOUT, 20);
-			curl_setopt($connection_c, CURLOPT_SSL_VERIFYPEER, FALSE);
-			curl_setopt($connection_c, CURLOPT_RETURNTRANSFER, 1); // return the result, do not print
-
-			$data = curl_exec($connection_c);
-			curl_close($connection_c);
-
-			echo "<pre>";
-			echo $data;
-			echo "</pre>";
-
-			return $data;
-
-		}
 
 		public function getCode() {
 
 			// https://developers.facebook.com/docs/instagram-basic-display-api/
 
-			$instagramId = urlencode("530800384432056");
-			$instagramAppSecret = urlencode("b5a6ef471345931fe850a48c3b130cd6");
-			$redirectUri = urlencode("https://www.cafe5.cz/auth/");
-
-			$api_url = "https://api.instagram.com/oauth/authorize?app_id=" . $instagramId . "&redirect_uri=" . $redirectUri . "&scope=user_profile,user_media&response_type=code";
+			$api_url = "https://api.instagram.com/oauth/authorize?app_id=" . $this->instagramId . "&redirect_uri=" . $this->redirectUri . "&scope=user_profile,user_media&response_type=code";
 
 			return $api_url;
 
@@ -344,20 +358,15 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		public function getNewAccessToken($code = NULL) {
 
-			$appId = htmlspecialchars("530800384432056");
-			$instagramUsername = "cafe5_prague";
-			$appSecret = htmlspecialchars("b5a6ef471345931fe850a48c3b130cd6");
-			$redirectUri = urlencode("https://www.cafe5.cz/auth/");
 			$codeTrimmed = str_replace('#_', '', urldecode($code));
-
 			$api_url = "https://api.instagram.com/oauth/access_token";
 
 			$dataCurl = array(
 
-				'app_id' => $appId,
-				'app_secret' => $appSecret,
+				'app_id' => $this->appId,
+				'app_secret' => $this->appSecret,
 				'grant_type' => 'authorization_code',
-				'redirect_uri' => $redirectUri,
+				'redirect_uri' => $this->redirectUri,
 				'code' => $codeTrimmed,
 
 			);
@@ -377,6 +386,12 @@ if (!class_exists('cafe5_instagram_feed')):
 			curl_close($connection_c); // close connection
 
 			return $json_return . "<br><br>" . $codeTrimmed;
+
+		}
+
+		public function __toString() {
+
+			return "Bacha, vypisuješ objekt...";
 
 		}
 
