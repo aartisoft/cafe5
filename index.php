@@ -99,7 +99,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Opening Hours</h3>
-                <p>Opened daily: Mon-Fri 9:00-20:00</p>
+                <p>Opened daily: Mon-Sun 9:00-20:00</p>
               </div>
             </div>
           </div>
