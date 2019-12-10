@@ -38,9 +38,10 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			$token = fopen($filename, 'r');
 			$content = fread($token, filesize($filename));
+			$parseSaltToken = explode("ipDaloveyBuohgGTZwcodeRJ1avofZ7HbZjzJbanDS8gtoninjaYj48CW", $content);
 			fclose($token);
 
-			return $content;
+			return $parseSaltToken[1];
 
 		}
 
@@ -88,9 +89,11 @@ if (!class_exists('cafe5_instagram_feed')):
 			$filename = $this->instagramTokenFile;
 			$file = fopen($filename, "w");
 
+			$saltValues = "ipDaloveyBuohgGTZwcodeRJ1avofZ7HbZjzJbanDS8gtoninjaYj48CW".$values;
+
 			if (is_resource($file)) {
 
-				fwrite($file, $values);
+				fwrite($file, $saltValues);
 				fclose($file);
 
 			} else {
@@ -107,7 +110,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			$resultsNumber = '10';
 			$url = 'https://graph.instagram.com/' . $this->getinstagramId() . '/media/?access_token=' . $this->getAccessToken() . "&fields=id,username,caption,permalink,media_url,thumbnail_url";
-
+			echo $url;
 			if (function_exists('curl_version')) {
 
 				$curl = curl_init();

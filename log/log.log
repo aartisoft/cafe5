@@ -493,3 +493,43 @@ aaa2019-10-30 17:40:05.370146 - Spuštěn Instagram cron ke stažení JSON z Ins
 2019-12-10 13:51:36.097040 - Instagram Extended Access Token vrátil status 200, což je OK :-)
 2019-12-10 13:51:36.097264 - Byl zapsán Instagram Instagram Extended Access Token do txt
 2019-12-10 13:51:36.097321 - Ukončen Instagram cron
+2019-12-10 20:06:33.115526 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+[ERROR] 2019-12-10 20:06:33.388758 - Instagram JSON vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:33.388935 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-10 20:06:33.388983 - Ukončen Instagram cron
+2019-12-10 20:06:33.389096 - Spuštěn Instagram cron k prodloužení Access Tokenu pro Instagram
+[ERROR] 2019-12-10 20:06:33.441735 - Instagram Extended Access Token vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:33.441972 - Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby
+2019-12-10 20:06:33.442065 - Ukončen Instagram cron
+2019-12-10 20:06:37.974620 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+[ERROR] 2019-12-10 20:06:38.029794 - Instagram JSON vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:38.029973 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-10 20:06:38.030064 - Ukončen Instagram cron
+2019-12-10 20:06:38.030267 - Spuštěn Instagram cron k prodloužení Access Tokenu pro Instagram
+[ERROR] 2019-12-10 20:06:38.087001 - Instagram Extended Access Token vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:38.087131 - Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby
+2019-12-10 20:06:38.087198 - Ukončen Instagram cron
+2019-12-10 20:06:39.678894 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+[ERROR] 2019-12-10 20:06:39.739151 - Instagram JSON vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:39.739249 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-10 20:06:39.739296 - Ukončen Instagram cron
+2019-12-10 20:06:39.739403 - Spuštěn Instagram cron k prodloužení Access Tokenu pro Instagram
+[ERROR] 2019-12-10 20:06:39.795613 - Instagram Extended Access Token vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:39.795718 - Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby
+2019-12-10 20:06:39.795778 - Ukončen Instagram cron
+2019-12-10 20:06:51.928514 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+[ERROR] 2019-12-10 20:06:51.984498 - Instagram JSON vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:51.984662 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-10 20:06:51.984750 - Ukončen Instagram cron
+2019-12-10 20:06:51.984996 - Spuštěn Instagram cron k prodloužení Access Tokenu pro Instagram
+[ERROR] 2019-12-10 20:06:52.037815 - Instagram Extended Access Token vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:52.037975 - Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby
+2019-12-10 20:06:52.038064 - Ukončen Instagram cron
+2019-12-10 20:06:58.392119 - Spuštěn Instagram cron ke stažení JSON z Instagramu
+[ERROR] 2019-12-10 20:06:58.447041 - Instagram JSON vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:58.447217 - Nebyl zapsán Instagram JSON do txt z důvodu chyby
+2019-12-10 20:06:58.447309 - Ukončen Instagram cron
+2019-12-10 20:06:58.447509 - Spuštěn Instagram cron k prodloužení Access Tokenu pro Instagram
+[ERROR] 2019-12-10 20:06:58.517821 - Instagram Extended Access Token vrátil chybu 190 s chybovou hláškouInvalid OAuth 2.0 Access Token
+[ERROR] 2019-12-10 20:06:58.518002 - Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby
+2019-12-10 20:06:58.518094 - Ukončen Instagram cron
