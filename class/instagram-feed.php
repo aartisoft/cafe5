@@ -14,7 +14,7 @@ if (!class_exists('cafe5_instagram_feed')):
 	class cafe5_instagram_feed {
 
 		public $filename = "/hosting/www/cafe5.cz/www/json/json.txt";
-		public $instagramTokenFile = "/hosting/www/cafe5.cz/www/token/instagram/instagram.txt"; 
+		public $instagramTokenFile = "/hosting/www/cafe5.cz/www/token/instagram/instagram.txt";
 		public $clientID = "4b1bff5bd54a4986b7d8bb517604dc14";
 		public $clientSecret = "d02b4f5ee74347219ca8bb9275caa2ec";
 		public $instagramId = 530800384432056;
@@ -24,8 +24,6 @@ if (!class_exists('cafe5_instagram_feed')):
 		public $appId = 530800384432056;
 		public $instagramUsername = "cafe5_prague";
 		public $appSecret = "b5a6ef471345931fe850a48c3b130cd6";
-
-
 
 		public function __construct() {
 
@@ -89,7 +87,7 @@ if (!class_exists('cafe5_instagram_feed')):
 			$filename = $this->instagramTokenFile;
 			$file = fopen($filename, "w");
 
-			$saltValues = "ipDaloveyBuohgGTZwcodeRJ1avofZ7HbZjzJbanDS8gtoninjaYj48CW".$values;
+			$saltValues = "ipDaloveyBuohgGTZwcodeRJ1avofZ7HbZjzJbanDS8gtoninjaYj48CW" . $values;
 
 			if (is_resource($file)) {
 
@@ -110,7 +108,6 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			$resultsNumber = '10';
 			$url = 'https://graph.instagram.com/' . $this->getinstagramId() . '/media/?access_token=' . $this->getAccessToken() . "&fields=id,username,caption,permalink,media_url,thumbnail_url";
-			echo $url;
 			if (function_exists('curl_version')) {
 
 				$curl = curl_init();
@@ -127,11 +124,9 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			}
 
-			if (!$json_response['error']) {
+			if (isset($json_response["data"][0]["id"])) {
 
 				$logger = new cafe5_logger("Instagram JSON vrátil status 200, což je OK :-)");
-
-				// tady bude funkce, ktera projde json a ulozi obrazky a url obrazku zameni na url na serveru
 
 				return $json_response;
 
@@ -232,7 +227,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 		public function extendedToken($token) {
 
-			$url = "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=".$this->instagramAppSecret."&access_token=".$token;
+			$url = "https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=" . $this->instagramAppSecret . "&access_token=" . $token;
 
 			if (function_exists('curl_version')) {
 
@@ -250,7 +245,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			}
 
-			if (!$json_response['error']) {
+			if (isset($json_response["access_token"])) {
 
 				$logger = new cafe5_logger("Instagram Extended Access Token vrátil status 200, což je OK :-)");
 
@@ -266,7 +261,7 @@ if (!class_exists('cafe5_instagram_feed')):
 
 				return $json_response;
 
-			}			
+			}
 
 		}
 
@@ -301,21 +296,20 @@ if (!class_exists('cafe5_instagram_feed')):
 
 			$getExtendedToken = $this->extendedToken($token);
 
-			if($getExtendedToken){
+			if ($getExtendedToken) {
 
 				$writeData = $this->writeAccessTokenToTxt($getExtendedToken);
 				$loggerOK = new cafe5_logger("Byl zapsán Instagram Instagram Extended Access Token do txt");
-				
+
 				echo "OK";
 
-			}else{
+			} else {
 
 				$loggerError = new cafe5_logger("Nebyl zapsán Instagram Extended Access Token do txt z důvodu chyby", "Error");
 
 				echo "error";
 
 			}
-
 
 			$loggerEnd = new cafe5_logger("Ukončen Instagram cron");
 
@@ -346,8 +340,7 @@ if (!class_exists('cafe5_instagram_feed')):
 				return false;
 			}
 
-		}		
-
+		}
 
 		public function getCode() {
 
